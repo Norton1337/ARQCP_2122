@@ -30,9 +30,5 @@ int sort_without_reps(int *src, int n, int *dest){
 		printf("Element[%d] = %d\n",k,*(dest+k));
 					
 	}
-	
-	
-	
-	
 	return sorted;
 }

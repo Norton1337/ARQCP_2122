@@ -8,7 +8,7 @@ int main(){
 	
 	
 	char* test = where_exists(str1,str2);
-	printf("\n%p",*(str2+2));
-	printf("\n%p",test);
+
+	printf("\n%s",test);
 
 }

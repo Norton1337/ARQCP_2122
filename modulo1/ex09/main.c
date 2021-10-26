@@ -8,12 +8,11 @@ int main(){
 	int dest[n];
 	
 	
-	printf("Src:  ");
+	printf("\nSrc:  [");
 	for(int k=0;k<n;k++){
 		printf("%d",*(src+k));
-					
-	};
-	printf("\n");
+	}
+	printf("]\n\n");
 	int sorted = sort_without_reps(src,n,dest);
 
 	printf("\nDest: ");

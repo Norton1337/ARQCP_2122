@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include <stdio.h>
 char* where_exists(char* str1, char* str2){
 
 	int pos=0;
@@ -9,7 +9,7 @@ char* where_exists(char* str1, char* str2){
 			while(*(str2+pos)==*(str1+pos)){
 				pos++;
 				if(*(str1+pos)=='\0'){
-					return *str2;
+					return str2;
 				}
 			}
 			pos=0;
