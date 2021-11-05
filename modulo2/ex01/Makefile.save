@@ -1,5 +1,5 @@
 main: main.o asm.o
-	gcc -Wall -g main.o asm.o -o main
+	g cc main.o asm.o -o main
 
 main.o: main.c asm.h
 	gcc -Wall -g -c main.c -o main.o

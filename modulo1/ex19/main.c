@@ -3,16 +3,15 @@
 
 int main(){
 
-	char sentence[]="the quick brown fox jumped over the lazy dog";
-	char word[] = "jumped";
+	char sentence[]="rrxXXXX";
+	char word[] = "x";
 	
-	char* initial_addr = sentence+5;
+	char* initial_addr = sentence;
 	
 	char* ptr = find_word(word,initial_addr);
 	printf("%s",ptr);
+	printf("\n%p",ptr);
 	
-
-
 	
 	return 0;
 }

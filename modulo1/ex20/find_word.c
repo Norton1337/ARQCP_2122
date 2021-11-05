@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include <stdio.h>
 
 char* find_word(char* word, char* initial_addr){
  
