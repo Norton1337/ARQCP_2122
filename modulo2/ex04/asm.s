@@ -4,9 +4,9 @@
 	.equ CONST, 15
 	
 	op3:
-		.long 0
+		.quad 0
 	op4:
-		.long 0
+		.quad 0
 		
 	.global op3
 	.global op4
@@ -32,10 +32,6 @@
 	.global sum_v3
 	sum_v3:
 		pushq %rbx
-		movq $0, %rax
-		movq $0, %rbx
-		movq $0, %rcx
-		movq $0, %rdx
 		movl op1(%rip), %ebx
 		movslq %ebx, %rbx
 		movl op2(%rip), %ecx
