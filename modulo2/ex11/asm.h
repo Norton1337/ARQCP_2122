@@ -1,4 +1,4 @@
 #ifndef ASM_H
 #define ASM_H
-short swapBytes();
+char test_flags();
 #endif

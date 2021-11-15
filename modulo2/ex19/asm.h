@@ -1,4 +1,4 @@
 #ifndef ASM_H
 #define ASM_H
-short swapBytes();
+int needed_time();
 #endif
