@@ -1,8 +1,8 @@
 .section .data
 	A:
-		.int 10
+		.int 1
 	B:
-		.int 5
+		.int 2
 		
 	.global A
 	.global B

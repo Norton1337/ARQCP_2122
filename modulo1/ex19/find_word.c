@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-char* find_word(char* word, char* initial_addr){
+char* find_word(char* initial_addr, char* word){
  
 	int pos=0;
 

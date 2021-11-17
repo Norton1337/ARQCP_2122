@@ -8,7 +8,8 @@ int main(){
 	
 	char* initial_addr = sentence;
 	
-	char* ptr = find_word(word,initial_addr);
+	char* ptr = find_word(initial_addr,word);
+	
 	printf("%s",ptr);
 	printf("\n%p",ptr);
 	

@@ -1,9 +1,9 @@
 # A Makefile with varaibles and suffix rules
 
 #variaveis
-INCLUDES = find_word.h find_all_words.h
-SOURCES = find_word.c find_all_words.c main.c
-OBJFILES = find_word.o find_all_words.o main.o
+INCLUDES = find_all_words.h
+SOURCES = find_all_words.c main.c
+OBJFILES = find_all_words.o main.o
 EXEC = prog_find_all_words
 
 #Suffix rules

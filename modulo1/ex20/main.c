@@ -2,15 +2,18 @@
 #include "find_all_words.h"
 int main(){
 
-	char sentence[]="rrxXXXX";
+	char sentence[]="rrxXX-XX";
 	char word[] = "X";
 	
-	char* initial_addr = sentence;
 	char *addrs[sizeof(sentence)];
 
-	find_all_words(initial_addr, word, addrs);
-
+	find_all_words(sentence, word, addrs);
 	
+	
+	printf("%s\n",addrs[0]);
+	printf("%s\n",addrs[1]);
+	printf("%s\n",addrs[2]);
+	printf("%s\n",addrs[3]);
 	
 	return 0;
 }
