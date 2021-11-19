@@ -1,25 +1,16 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: upper2.o main.o
+	gcc upper2.o main.o -o main
 
-#variaveis
-INCLUDES = upper2.h
-SOURCES = upper2.c main.c
-OBJFILES = upper2.o main.o
-EXEC = prog_upper2
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+upper2.o: upper2.c
+	gcc -g -Wall -c upper2.c -o upper2.o
+	
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main
+

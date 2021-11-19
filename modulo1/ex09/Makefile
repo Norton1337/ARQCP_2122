@@ -1,25 +1,16 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: sort_without_reps.o main.o
+	gcc sort_without_reps.o main.o -o main
 
-#variaveis
-INCLUDES = sort_without_reps.h
-SOURCES = sort_without_reps.c main.c
-OBJFILES = sort_without_reps.o main.o
-EXEC = prog_sort_without_reps
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+sort_without_reps.o: sort_without_reps.c
+	gcc -g -Wall -c sort_without_reps.c -o sort_without_reps.o
+	
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main
+

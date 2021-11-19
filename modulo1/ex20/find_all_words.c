@@ -1,4 +1,3 @@
-#include "find_word.h"
 #include <stdio.h>
 
 void find_all_words(char* str, char* word, char** addrs){

@@ -1,25 +1,15 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: swap.o main.o
+	gcc swap.o main.o -o main
 
-#variaveis
-INCLUDES = swap.h
-SOURCES = swap.c main.c
-OBJFILES = swap.o main.o
-EXEC = prog_swap
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+swap.o: swap.c
+	gcc -g -Wall -c swap.c -o swap.o
+		
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main

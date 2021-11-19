@@ -1,25 +1,16 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: frequencies.o main.o
+	gcc frequencies.o main.o -o main
 
-#variaveis
-INCLUDES = frequencies.h
-SOURCES = frequencies.c main.c
-OBJFILES = frequencies.o main.o
-EXEC = prog_frequencies
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+frequencies.o: frequencies.c
+	gcc -g -Wall -c frequencies.c -o frequencies.o
+	
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main
+

@@ -1,25 +1,16 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: array_sort2.o main.o
+	gcc array_sort2.o main.o -o main
 
-#variaveis
-INCLUDES = array_sort2.h
-SOURCES = array_sort2.c main.c
-OBJFILES = array_sort2.o main.o
-EXEC = prog_array_sort2
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+array_sort2.o: array_sort2.c
+	gcc -g -Wall -c array_sort2.c -o array_sort2.o
+	
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main
+

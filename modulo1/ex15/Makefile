@@ -1,25 +1,21 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: populate.o check.o inc_nsets.o main.o
+	gcc populate.o check.o inc_nsets.o main.o -o main
 
-#variaveis
-INCLUDES = populate.h check.h inc_nsets.h
-SOURCES = populate.c check.c inc_nsets.c main.c
-OBJFILES = populate.o check.o inc_nsets.o main.o
-EXEC = prog_ex15
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+populate.o: populate.c
+	gcc -g -Wall -c populate.c -o populate.o
+	
+check.o: check.c
+	gcc -g -Wall -c check.c -o check.o
+	
+inc_nsets.o: inc_nsets.c
+	gcc -g -Wall -c inc_nsets.c -o inc_nsets.o
+	
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main

@@ -1,25 +1,16 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: capitalize.o main.o
+	gcc capitalize.o main.o -o main
 
-#variaveis
-INCLUDES = capitalize.h
-SOURCES = capitalize.c main.c
-OBJFILES = capitalize.o main.o
-EXEC = prog_capitalize
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+capitalize.o: capitalize.c
+	gcc -g -Wall -c capitalize.c -o capitalize.o
+	
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main
+

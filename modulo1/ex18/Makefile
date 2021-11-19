@@ -1,25 +1,15 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: compress_shorts.o main.o
+	gcc compress_shorts.o main.o -o main
 
-#variaveis
-INCLUDES = compress_shorts.h
-SOURCES = compress_shorts.c main.c
-OBJFILES = compress_shorts.o main.o
-EXEC = prog_compress_shorts
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+compress_shorts.o: compress_shorts.c
+	gcc -g -Wall -c compress_shorts.c -o compress_shorts.o
+		
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main

@@ -1,25 +1,16 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: sum_even.o main.o
+	gcc sum_even.o main.o -o main
 
-#variaveis
-INCLUDES = sum_even.h
-SOURCES = sum_even.c main.c
-OBJFILES = sum_even.o main.o
-EXEC = prog_sum_even
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+sum_even.o: sum_even.c
+	gcc -g -Wall -c sum_even.c -o sum_even.o
+	
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main
+

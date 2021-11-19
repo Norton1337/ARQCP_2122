@@ -1,25 +1,16 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: palindrome.o main.o
+	gcc palindrome.o main.o -o main
 
-#variaveis
-INCLUDES = palindrome.h
-SOURCES = palindrome.c main.c
-OBJFILES = palindrome.o main.o
-EXEC = prog_palindrome
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+palindrome.o: palindrome.c
+	gcc -g -Wall -c palindrome.c -o palindrome.o
+	
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main
+

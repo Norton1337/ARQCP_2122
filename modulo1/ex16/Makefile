@@ -1,25 +1,15 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: where_exists.o main.o
+	gcc where_exists.o main.o -o main
 
-#variaveis
-INCLUDES = where_exists.h
-SOURCES = where_exists.c main.c
-OBJFILES = where_exists.o main.o
-EXEC = prog_where_exists
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+where_exists.o: where_exists.c
+	gcc -g -Wall -c where_exists.c -o where_exists.o
+		
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main

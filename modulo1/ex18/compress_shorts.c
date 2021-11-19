@@ -1,13 +1,14 @@
 #include <stdio.h>
 void compress_shorts(short* shorts, int n_shorts, int* integers){
 
-	short *ptr2 =(short*)integers;
-
-	for(int i=0;i+1<n_shorts;i++){
-		
-		*ptr2=shorts[i];
+	unsigned short *ptr2 =(unsigned short*)integers;
+	
+	int i=0;
+	while(i<n_shorts){
+		*ptr2=*shorts;
 		ptr2++;
-		*ptr2=shorts[i+1];
+		shorts++;
+		i++;
 	}
 	
 }

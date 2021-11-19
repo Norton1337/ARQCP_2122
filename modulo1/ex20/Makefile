@@ -1,25 +1,15 @@
-# A Makefile with varaibles and suffix rules
+# A simple Makefile
+main: find_all_words.o main.o
+	gcc find_all_words.o main.o -o main
 
-#variaveis
-INCLUDES = find_all_words.h
-SOURCES = find_all_words.c main.c
-OBJFILES = find_all_words.o main.o
-EXEC = prog_find_all_words
-
-#Suffix rules
-.SUFFIXES : .c .o
-
-#How to build and object .o from a code file .c; $< -- prog
-.c.o:
-	gcc -Wall -g -c $<
-
-${EXEC}: ${OBJFILES}
-	gcc -Wall -g -o ${EXEC} ${OBJFILES}
-
-${OBJFILES}: ${SOURCES} ${INCLUDES}
-
-run: ${EXEC}
-	./${EXEC}
-
+find_all_words.o: find_all_words.c
+	gcc -g -Wall -c find_all_words.c -o find_all_words.o
+		
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+	
 clean:
-	rm -f ${OBJFILES} ${EXEC}
+	rm -f *.o main
+
+run: main
+	./main
