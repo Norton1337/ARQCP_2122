@@ -1,7 +1,7 @@
 main: main.o nota.o min_max_notas.o
 	gcc -Wall -g main.o nota.o min_max_notas.o -o main
 
-main.o: main.c nota.h
+main.o: main.c nota.h min_max_notas.h
 	gcc -Wall -g -c main.c -o main.o
 
 min_max_notas.o: min_max_notas.s
