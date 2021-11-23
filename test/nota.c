@@ -8,13 +8,13 @@ short calcula_notas(unsigned int *notas, int n){
 	short numero_alteracoes = 0;
 	int i = 0, j = 0;
 	
-	unsigned char *chars = (unsigned char*)notas; //apontador em char para percorrer o array de 8 em 8 bits
+	unsigned char *chars = (unsigned char*)notas; //apontador do tipo char para percorrer o array de 8 em 8 bits
 	
 	for(i = 0; i < n; i++){
-		nota_final = (*chars * 0.2) + ((*chars + 1) * 0.2) + ((*chars + 2) * 0.2) + ((*chars + 3) * 0.2) //calcular a nota final acedendo as primeiras quatro posições de 8 em 8 bits do array.;
-		chars += 4;
+		nota_final = (*chars * 0.2) + ((*chars + 1) * 0.2) + ((*chars + 2) * 0.2) + ((*chars + 3) * 0.2); //calcular a nota final acedendo as primeiras quatro posições de 8 em 8 bits do array.;
+		chars += 4; //incrementa o array do tipo chars para a posição seguinte do array notas
 		flag = min_max_notas();
-		if(flag == '1'){
+		if(flag == 1){ //comparação para saber se existiu alteração
 			numero_alteracoes++;
 		}
 	}
