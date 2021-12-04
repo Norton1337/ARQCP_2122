@@ -19,10 +19,10 @@
 		cmpw %dx, %bx
 		je equals
 		subl $1, %ecx
-		addq $1, (%rdi)
+		addq $2, %rdi
 		jmp loop
 	equals:
-		movw (%rdi), %ax
+		movq %rdi, %rax
 	end:
 		popq %rbx
 		ret
