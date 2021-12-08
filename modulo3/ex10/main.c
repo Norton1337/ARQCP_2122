@@ -3,7 +3,7 @@
 
 char string1[] = "test";
 char string2[] = "ing";
-char string3[40];
+char string3[80];
 char *ptr1 = string1;
 char *ptr2 = string2;
 char *ptr3 = string3;
