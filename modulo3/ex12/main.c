@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "asm.h"
 
-short array[] = {105,101,100,110,108};
-int num = 5;
+short array[] = {1000,1000,1000};
+int num = 3;
 short *ptrvec = array;
 
 int main(void){
