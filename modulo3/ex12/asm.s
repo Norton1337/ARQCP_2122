@@ -22,7 +22,7 @@
 		jmp loop
 		
 	changeToZero:
-		movq $0, (%rdi)
+		movw $0, (%rdi)
 		addq $2, %rdi
 		subl $1, %ebx
 		addl $1, %eax

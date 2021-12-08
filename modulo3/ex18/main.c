@@ -2,16 +2,17 @@
 #include "asm.h"
 
 
-int array[] = {1,1,1,1,2};
+int array[] = {1,2,3,4,5};
 int *ptrvec = array;
 int num = 5; 
 int main(void){
 	
 	
-	array_sort();
-	
+	int res = sort_without_reps();
+	printf("%d\n",res);
+	/*
 	for(int i=0;i<num;i++){
 		printf("%d\n",*(ptrvec+i));
 	}
-
+	*/
 }
