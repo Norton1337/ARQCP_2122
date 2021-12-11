@@ -1,6 +1,7 @@
 .section .data
-	.global ptrvec
+	.global ptrsrc
 	.global num
+	.global ptrdest
 	
 .section .text
 	.global sort_without_reps
@@ -9,7 +10,8 @@
 		movq $0, %rbx
 		movq $0, %r8
 		movq $0, %r9
-		movq ptrvec(%rip), %rsi
+		movq ptrsrc(%rip), %rsi
+		movq ptrdest(%rip), %rdi
 		movl num(%rip), %ebx
 		movl num(%rip), %r10d
 		movl (%rsi), %ecx
@@ -27,6 +29,7 @@
 		jmp loop
 		
 	isSmallest:
+		
 		movl %edx, %ecx
 		movl num(%rip), %r9d
 		subl %ebx, %r9d
