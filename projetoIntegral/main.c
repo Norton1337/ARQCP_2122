@@ -1,23 +1,34 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
-#include "US301.h"
-#include "divideByComma.h"
-#include "printArray.h"
-#include "printMatrix.h"
 #include "putRestWithZero.h"
+#include "printMatrix.h"
+#include "printArray.h"
+#include "divideByComma.h"
+#include "US314.h"
+#include "US315.h"
+
 #define N_ELEM 4
 #define N_MAX 5
+#define SIZE 4
+typedef struct {
+	int x;
+	int y;
+	int z;
+} Coordinates;
 
-int num=N_MAX;
-int elemSize=N_ELEM;
+	
+
+int num = N_MAX;
+int elemSize = N_ELEM;
 int matrix[N_MAX][N_MAX][N_MAX];
-int main()
-{
-    
-    putRestWithZero(matrix);
+int structArraySize = SIZE;
 
+
+
+int main(){
+	
+    putRestWithZero(matrix);
 
     FILE* filePointer;
     int bufferLength = 255;
@@ -31,7 +42,6 @@ int main()
         pt = strtok (s,",");
 
         int *arrayOfInt = divideByComma(pt);
-
         int elem = arrayOfInt[0];
         int x = arrayOfInt[1];
         int y = arrayOfInt[2];
@@ -42,16 +52,30 @@ int main()
         //printMatrix(matrix);
         //printArray(arrayOfInt);
     }
+     //Close file descriptor
+    fclose(filePointer);
+    
+    
     printMatrix(matrix);
     
+    printf("\n--------------------------\n");
+    printf("US314: 'get amount of containers and free slots.'\n\n");
     long amountOfContainers = countContainers();
     int *amount = (int*) &amountOfContainers;
     
 	printf("There are %d containers\n",*amount);
 	printf("There are %d free slots\n",*(amount+1));
-	
-    //Close file descriptor
-    fclose(filePointer);
+	printf("\n--------------------------\n");
+	printf("US315: 'verify if container exists, 1 if it does, 0 otherwise.'\n\n");
+	int exists = containerExists(4,4,4);
+	printf("Exists: %d\n",exists);
+	printf("\n--------------------------\n");
+	printf("US316: 'get amount of occupied positions in array.'\n\n");
+	Coordinates coords[SIZE] = {{1,1,1}, {3,2,0}, {4,4,4}, {3,2,4}};
+		
+	int amountOccupied = totalOccupied(coords);
+    
+    printf("There are %d occupied positions in this array\n\n",amountOccupied);
+
+    return 0;
 }
-
-

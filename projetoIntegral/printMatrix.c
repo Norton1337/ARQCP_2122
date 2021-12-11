@@ -1,14 +1,14 @@
 #include <stdio.h>
-void printMatrix(int matrix[num][num][num]){
+#define N_MAX 5
+void printMatrix(int matrix[N_MAX][N_MAX][N_MAX]){
   printf("\nMatrix is :\n");
-    for(int x=0;x<num;x++)
+    for(int x=0;x<N_MAX;x++)
     {
-        for(int y=0;y<num;y++)
+        for(int y=0;y<N_MAX;y++)
         {
-            for(int z=0;z<num;z++){
+            for(int z=0;z<N_MAX;z++){
                 printf("%d\t",matrix[x][y][z]);
             }
-            printf("|");
         }
         printf("\n");
     }
