@@ -6,60 +6,43 @@
 	.global array_sort
 	array_sort:
 		pushq %rbx
-		pushq %r12
 		movq $0, %rbx
 		movq $0, %r8
 		movq $0, %r9
+		movq $0, %r10
 		movq ptrvec(%rip), %rsi
-		movl num(%rip), %ebx
-		movl num(%rip), %r10d
-		movl (%rsi), %ecx
-		movq $0, %r12
-		
-	loop:
-		cmpl $0, %r10d
-		je end
-		cmpl $0, %ebx
-		je change
-		movl (%rsi), %edx
-		cmpl %ecx, %edx
-		jge isGreater
-		subl $1, %ebx
-		addq $4, %rsi
-		jmp loop
-		
-	isGreater:
-		movl %edx, %ecx
 		movl num(%rip), %r9d
-		subl %ebx, %r9d
-		subl $1, %ebx
-		addq $4, %rsi
-		jmp loop
-	
-	change:
-		movslq %r10d, %rax
-		movq $4, %rdx
-		mulq %rdx
-		subq %rax, %rsi
-		movq $0, %rdx
-		movl (%rsi), %r8d
-		movl %ecx, (%rsi)
-		subl %r12d, %r9d
-		movslq %r9d, %rax
-		movq $4, %rdx
-		mulq %rdx
-		addq %rax, %rsi
-		movl %r8d, (%rsi)
-		subq %rax, %rsi
-		subl $1, %r10d
-		addq $4, %rsi
-		movl %r10d, %ebx
+		subl $1, %r9d
+		cmpl $0, %r9d
+		jle end
+	loop:
 		movl (%rsi), %ecx
-		addl $1, %r12d
-		jmp loop
+		movl 4(%rsi), %edx
+		cmp %ecx, %edx
+		jle skip
+		movl %edx, (%rsi)
+		addq $4, %rsi
+		movl %ecx, (%rsi)
+		subq $4, %rsi
+		movq $1, %r8
+	skip:
+		addq $4, %rsi
+		addl $1, %r10d
+		cmpl %r9d, %r10d
+		jl loop
+
+	reset:
+		cmpq $0, %r8
+		je end
+		movq $0, %r8
+		movl $4, %eax
+		mull %r10d
+		subq %rax, %rsi
+		movl num(%rip), %r9d
+		subl $1, %r9d
+		movl $0, %r10d
+		jmp loop	
 		
 	end:
-		movl %ecx, %eax
-		popq %r12
 		popq %rbx
 		ret
