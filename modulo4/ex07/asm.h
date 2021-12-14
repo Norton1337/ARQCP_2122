@@ -1,4 +1,4 @@
 #ifndef ASM_H
 #define ASM_H
-int test_equal(char *a, char *b);
+int count_even(short *vec, int n);
 #endif

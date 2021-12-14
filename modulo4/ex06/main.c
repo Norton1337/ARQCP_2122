@@ -3,9 +3,9 @@
 
 
 int main(void){
-	int v1 = -1;
-	int square = inc_and_square(&v1, -2);
-	printf("square: %d\n",square);
-	printf("inc: %d\n",v1);
+	char string1[] = "test2";
+	char string2[] = "test2"; 
+	int isEqual = test_equal(string1, string2);
+	printf("isEqual: %d\n",isEqual);
 	
 }

@@ -2,14 +2,27 @@
 
 
 .section .text
-	.global inc_and_square
-	inc_and_square:
+	.global test_equal
+	test_equal:
+		pushq %rbx
+		movq $1, %rax
+	loop:
+		
+		movb (%rdi), %bl
+		movb (%rsi), %bh
+		cmpb %bl, %bh
+		je skip
+		je skip
 		movq $0, %rax
-		incq (%rdi)
-		cmpl $0, %esi
+		jmp end
+	skip:
+		incq %rdi
+		incq %rsi
+		cmpb $0, %bl
 		je end
-		movl %esi, %eax
-		cdq
-		imull %esi
+		jmp loop
+
 	end:
+	
+		popq %rbx
 		ret
