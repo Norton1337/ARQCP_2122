@@ -2,7 +2,7 @@
 #include "asm.h"
 
 
-int array[] = {1,1,1,1,2};
+int array[] = {1,3,5,1,2};
 int *ptrvec = array;
 int num = 5; 
 int main(void){
