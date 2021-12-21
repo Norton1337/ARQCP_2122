@@ -8,16 +8,24 @@
 	frequencies:
 		pushq %rbx
 		movq $0, %rax
-		movq ptrgrades(%rip), %rsi
-		movq ptrfreq(%rip), %rdi
+		movq $0, %rbx
+		movq ptrgrades(%rip), %rdi
+		movq ptrfreq(%rip), %rsi
 		movl num(%rip), %ecx
+		
+	setZeros:
+		movl $0, (%rsi)
+		addq $1, %rsi
+		addl $1, %ebx
+		cmpl $21, %ebx
+		jl setZeros
+		
+		subq %rbx, %rsi
 	loop:
 		cmpl $0, %ecx
 		je end
 		movb (%rdi), %bl
 		movsbq %bl, %rax
-		movl $2, %ebx
-		mull %ebx
 		addq %rax, %rsi
 		addb $1, (%rsi)
 		subq %rax, %rsi

@@ -3,45 +3,38 @@
 
 .section .text
 	.global incr
-	incr:
-		pushq %rbp 
-		movq $0, %rax
-		movq %rsp, %rbp
-		subq $8, %rsp 
-		movl %edi, %ecx
-		movl %ecx, -4(%rbp)
-		movl -4(%rbp), %eax
-		movsbl %sil, %ecx
-		addl %ecx, %eax
-		movl %eax, -8(%rbp)
+	incr: 
+		pushq %rbx
 		
-		movw %ax, %cx
-		movw %cx, %di
-		movl -4(%rbp), %eax
-				
-		movq %rbp, %rsp
-		popq %rbp
+		movswl (%rdi), %eax
+		movl %eax, %ebx
+		movsbl %sil, %ecx
+		addl %ecx, %ebx
+		movw %bx, (%rdi)	
+		popq %rbx
 		ret
 		
 		
 	.global call_incr
 	call_incr:
-		pushq %rbp 
-		movq $0, %rax
+		pushq %rbp
 		movq %rsp, %rbp
-		subq $6, %rsp 
+		subq $6, %rsp
+		
+		pushq %rdx 
+		movq $0, %rdx
+		movq $0, %rax 
+		
 		movw $0xA1B2, -2(%rbp)
-		movw -2(%rbp), %ax
-		movw %ax, %di
+		leaq -2(%rbp), %rdi
 		movb $0xC3, %sil
 		call incr
-		movl %eax, -6(%rbp)
-		addl -2(%rbp), %eax
-		
-		movb $0xC3, %al
+		movswl -2(%rbp), %ecx
+		addl %ecx, %eax
 		
 		
-		
+		popq %rdx
+
 		movq %rbp, %rsp
 		popq %rbp
 		ret

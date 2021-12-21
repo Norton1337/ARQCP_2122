@@ -5,11 +5,7 @@
 	.global inc_and_square
 	inc_and_square:
 		movq $0, %rax
-		incq (%rdi)
-		cmpl $0, %esi
-		je end
+		incl (%rdi)
 		movl %esi, %eax
-		cdq
 		imull %esi
-	end:
 		ret

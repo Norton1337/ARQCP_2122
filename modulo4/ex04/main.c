@@ -4,7 +4,7 @@
 
 int main(void){
 	int smaller = 0;
-	int sum = sum_smaller(-1, -2, &smaller);
+	int sum = sum_smaller(105, 5, &smaller);
 
 	
 	printf("sum: %d\n",sum);
