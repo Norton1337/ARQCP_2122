@@ -2,11 +2,12 @@
 #include "activate_bits.h"
 
 
+
 int main(void){
-	int a = 152;
-	int left = 15;
-	int right = 2;
+	int a = 0;
+	int left = 24;
+	int right = 7;
 	int res = activate_bits(a,left,right);
-	printf("res = %d\n",res);
+	printf("res = %ld\n",res);
 
 }

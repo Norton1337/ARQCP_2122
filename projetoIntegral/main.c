@@ -56,7 +56,7 @@ int main(){
 	
 	printf("\n----------------------------------------------------\n");
 	printf("US315: 'Verify if container exists, 1 if it does, 0 otherwise.'\n\n");
-	int exists = containerExists(1,1,0);
+	int exists = containerExists(0,0,1);
 	printf("Exists: %d.\n",exists);
 	
 	printf("\n----------------------------------------------------\n");
