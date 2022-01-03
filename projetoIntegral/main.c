@@ -28,7 +28,7 @@ int main(){
  * if changed then "make clean" before "make run"
  */
  
-    filePointer = fopen("cargo2.txt", "r");
+    filePointer = fopen("cargo.txt", "r");
 	
     while(fgets(buffer, bufferLength, filePointer)) {
         char *s = buffer;
@@ -62,12 +62,12 @@ int main(){
 	
 	printf("\n----------------------------------------------------\n");
 	printf("US315: 'Verify if container exists, 1 if it does, 0 otherwise.'\n\n");
-	int exists = containerExists(3,5,7);
+	int exists = containerExists(3,2,0);
 	printf("Exists: %d.\n",exists);
 	
 	printf("\n----------------------------------------------------\n");
 	printf("US316: 'Get amount of occupied positions in array.'\n\n");
-	Coordinates coords[SIZE] = {{1,8,0}, {6,7,8}, {2,2,6}, {7,0,2}};
+	Coordinates coords[SIZE] = {{3,2,0}, {2,2,2}, {2,0,0}, {7,0,2}};
 	int amountOccupied = totalOccupied(coords);
     printf("There are %d occupied positions in this array.\n\n",amountOccupied);
 
