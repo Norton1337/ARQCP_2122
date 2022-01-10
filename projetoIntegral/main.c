@@ -21,7 +21,13 @@ int main(){
     FILE* filePointer;
     int bufferLength = 255;
     char buffer[bufferLength];
-
+/*
+ * Edit utility.h
+ * if "cargo.txt" -> N_ELEM = 4 AND N_MAX = 5 
+ * if "cargo2.txt" -> N_ELEM = 9 AND N_MAX = 10 
+ * if changed then "make clean" before "make run"
+ */
+ 
     filePointer = fopen("cargo.txt", "r");
 	
     while(fgets(buffer, bufferLength, filePointer)) {
@@ -56,12 +62,12 @@ int main(){
 	
 	printf("\n----------------------------------------------------\n");
 	printf("US315: 'Verify if container exists, 1 if it does, 0 otherwise.'\n\n");
-	int exists = containerExists(1,1,0);
+	int exists = containerExists(3,2,0);
 	printf("Exists: %d.\n",exists);
 	
 	printf("\n----------------------------------------------------\n");
 	printf("US316: 'Get amount of occupied positions in array.'\n\n");
-	Coordinates coords[SIZE] = {{1,1,1}, {3,2,0}, {4,4,4}, {5,8,4}};
+	Coordinates coords[SIZE] = {{3,2,0}, {2,2,2}, {2,0,0}, {7,0,2}};
 	int amountOccupied = totalOccupied(coords);
     printf("There are %d occupied positions in this array.\n\n",amountOccupied);
 

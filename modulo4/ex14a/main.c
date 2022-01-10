@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include "count_bits_zero.h"
+#include "activate_bit.h"
 
 
 
 int main(void){
-	
-	int res = activate_bit(-6);
+	int number = 6;
+	int res = activate_bit(&number,4);
 	printf("result = %d\n",res);
 
 }
