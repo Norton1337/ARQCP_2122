@@ -10,7 +10,7 @@ typedef struct {
 	float container_tare;
 	float container_gross;
 	float container_volume;
-	char[4] iso_code;
+	char iso_code[4];
 	char *certificates;
 	char *repairInfo;
 	char *type;

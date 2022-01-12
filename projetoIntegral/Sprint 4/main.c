@@ -3,24 +3,34 @@
 #include "info.h"
 #include "freeMemory.h"
 #include "allocateMemory.h"
+#include "getMax.h"
+#include "printMatrix.h"
 int main(){
 	
+	int x=0;
+	int y=0;
+	int z=0;
 	
-	Containers *** matrix = (Containers***) calloc(10, sizeof(Containers**));
+	getMax(&x,&y,&z);
+	
+	printf("max X: %d\n",x);
+    printf("max Y: %d\n",y);
+    printf("max Z: %d\n",z);
+    
+	Containers *** matrix = (Containers***) calloc(x, sizeof(Containers**));
 	//Allocate Memory
-	if (allocateMemory(matrix) == 0){
+	if (allocateMemory(matrix,x,y,z) == 0){
 		fprintf(stderr, "Out of memory");
         exit(0);
 	}
 	
 
 	//Print containers id
-	printMatrix(matrix);
-    
+	printMatrix(matrix,x,y,z);
     
     
     //Free memory
-    freeMemory(matrix);
+    freeMemory(matrix,x,y,z);
 	
 	
 	return 0;
