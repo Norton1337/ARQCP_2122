@@ -5,6 +5,7 @@
 #include "allocateMemory.h"
 #include "getMax.h"
 #include "printMatrix.h"
+#include "importContainers.h"
 int main(){
 	
 	int x=0;
@@ -24,7 +25,11 @@ int main(){
         exit(0);
 	}
 	
-
+	if(importContainers(matrix,x,y,z) == 0){
+		fprintf(stderr, "Out of memory");
+        exit(0);
+	}
+	
 	//Print containers id
 	printMatrix(matrix,x,y,z);
     
