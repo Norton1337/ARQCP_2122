@@ -2,13 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include "divideByComma.h"
-int getMax(int *x, int *y, int *z){
+void getMax(int *x, int *y, int *z){
 
 	FILE* filePointer;
     int bufferLength = 255;
     char buffer[bufferLength];
  
-    filePointer = fopen("containers.csv", "r");
+    filePointer = fopen("containers.txt", "r");
 	
     while(fgets(buffer, bufferLength, filePointer)) {
         char *s = buffer;
@@ -34,4 +34,7 @@ int getMax(int *x, int *y, int *z){
      //Close file descriptor
     fclose(filePointer);
 
+	*x = *x+1;
+	*y = *y+1;
+	*z = *z+1;
 }

@@ -10,7 +10,7 @@ void printMatrix(Containers*** matrix, int x, int y, int z){
         {
 
             for (int k = 0; k < z; k++) {
-                printf("%d", matrix[i][j][k].container_number);
+                printf("%s ", matrix[i][j][k].iso_code);
             }
             printf("\n");
         }
