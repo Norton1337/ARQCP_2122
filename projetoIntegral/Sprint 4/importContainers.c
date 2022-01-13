@@ -32,7 +32,6 @@ int importContainers(Containers*** matrix){
 				temp.load) != EOF
 			)
 	{
-							
 		matrix[x][y][z]=temp;
 	}
 				

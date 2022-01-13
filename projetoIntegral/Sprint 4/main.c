@@ -6,6 +6,8 @@
 #include "getMax.h"
 #include "printMatrix.h"
 #include "importContainers.h"
+#include "printContainerInfo.h"
+
 int main(){
 	
 	int x=0;
@@ -34,6 +36,7 @@ int main(){
 	//Print containers id
 	printMatrix(matrix,x,y,z);
     
+    printContainerInfo(matrix,1,0,1);
     
     //Free memory
     freeMemory(matrix,x,y,z);

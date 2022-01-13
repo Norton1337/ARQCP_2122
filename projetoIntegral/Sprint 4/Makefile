@@ -1,7 +1,7 @@
-main: main.o freeMemory.o allocateMemory.o printMatrix.o getMax.o divideByComma.o importContainers.o
-	gcc -Wall -g main.o freeMemory.o allocateMemory.o printMatrix.o getMax.o divideByComma.o importContainers.o -o main
+main: main.o freeMemory.o allocateMemory.o printMatrix.o getMax.o divideByComma.o importContainers.o printContainerInfo.o
+	gcc -Wall -g main.o freeMemory.o allocateMemory.o printMatrix.o getMax.o divideByComma.o importContainers.o printContainerInfo.o -o main
 
-main.o: main.c info.h freeMemory.h allocateMemory.h printMatrix.h getMax.h importContainers.h
+main.o: main.c info.h freeMemory.h allocateMemory.h printMatrix.h getMax.h importContainers.h printContainerInfo.h
 	gcc -Wall -g -c main.c -o main.o
 
 freeMemory.o: freeMemory.c info.h
@@ -21,6 +21,9 @@ divideByComma.o: divideByComma.c
 	
 importContainers.o : importContainers.c info.h
 	gcc -Wall -g -c importContainers.c -o importContainers.o
+
+printContainerInfo.o : printContainerInfo.c info.h
+	gcc -Wall -g -c printContainerInfo.c -o printContainerInfo.o
 
 run: main
 	./main
