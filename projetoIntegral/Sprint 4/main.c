@@ -30,6 +30,7 @@ int main(){
         exit(0);
 	}
 	
+	
 	//Print containers id
 	printMatrix(matrix,x,y,z);
     

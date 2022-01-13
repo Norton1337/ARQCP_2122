@@ -1,36 +1,44 @@
 #include <stdio.h>
 #include "info.h"
 
-int importContainers(Containers*** matrix,int x, int y, int z){
-	int i = 0, j = 0, k = 0;
-	int validScan = 0;
+int importContainers(Containers*** matrix){
+	int x=0;
+	int y=0;
+	int z=0;
+	
+	Containers temp;
+
 	FILE* filePointer;
-	filePointer = fopen("containers.csv", "r");
+	filePointer = fopen("containers.txt", "r");
 	
 	if(filePointer == NULL) {
 		return 0;
 	}
-	
-	for(i = 0; i < x; i++){
-		for(j = 0; j < y; j++){
-			for(k = 0; k < z; k++){
+	while(
+		fscanf(filePointer,"%d,%d,%d,%d,%d,%d,%d,%d,%d,%[^,],%[^,],%[^,],%[^,],%[^\n]",
+				&x,
+				&y,
+				&z,
+				&temp.container_number,
+				&temp.check_digit,
+				&temp.container_payload,
+				&temp.container_tare,
+				&temp.container_gross,
+				&temp.container_volume,
+				temp.iso_code,
+				temp.certificates,
+				temp.repairInfo,
+				temp.type,
+				temp.load) != EOF
+			)
+	{
+							
+		matrix[x][y][z]=temp;
+	}
 				
-				validScan = fscanf(filePointer,"%d,%d,%d,%d,%d,%d,%d,%d,%d,%c,%s,%s,%s,%s",
-						matrix[i][j][k].x,matrix[i][j][k].y,matrix[i][j][k].z,
-						matrix[i][j][k].container_number,matrix[i][j][k].check_digit,
-						matrix[i][j][k].container_payload,matrix[i][j][k].container_tare,
-						matrix[i][j][k].container_gross,matrix[i][j][k].container_volume,
-						matrix[i][j][k].iso_code,matrix[i][j][k].certificates,
-						matrix[i][j][k].repairInfo,matrix[i][j][k].type,
-						matrix[i][j][k].load);
-						printf("Cheguei\n");
-			}
-		}
-	}
+	fclose(filePointer);		
+						
 	
-	if(validScan == 0){
-		return 0;
-	}
-	//ToDo, verificar se validScan corresponde ao numero de input desejado(14).
+	
 	return 1;
 }
