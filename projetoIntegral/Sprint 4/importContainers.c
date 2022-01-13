@@ -1,5 +1,19 @@
 #include <stdio.h>
 #include "info.h"
+	typedef struct {
+	char materialType[20];
+	float espessura;
+	
+} Materials;
+
+typedef struct {
+	int containerNumber;
+	float temperaturaInterior;
+	float containerVolume;
+	char type[20];
+	char load[20];
+	Materials materials[10];
+} Containers;
 
 int importContainers(Containers*** matrix){
 	int x=0;
@@ -14,24 +28,20 @@ int importContainers(Containers*** matrix){
 	if(filePointer == NULL) {
 		return 0;
 	}
-	while(
-		fscanf(filePointer,"%d,%d,%d,%d,%d,%d,%d,%d,%d,%[^,],%[^,],%[^,],%[^,],%[^\n]",
+	char materials[100];
+	
+	while(fscanf(filePointer,"%d,%d,%d,%d,%f,%f,%[^,],%[^,],{%[^}]}",
 				&x,
 				&y,
 				&z,
-				&temp.container_number,
-				&temp.check_digit,
-				&temp.container_payload,
-				&temp.container_tare,
-				&temp.container_gross,
-				&temp.container_volume,
-				temp.iso_code,
-				temp.certificates,
-				temp.repairInfo,
+				&temp.containerNumber,
+				&temp.temperaturaInterior,
+				&temp.containerVolume,
 				temp.type,
-				temp.load) != EOF
-			)
+				temp.load,
+				materials) != EOF)
 	{
+		
 		matrix[x][y][z]=temp;
 	}
 				
