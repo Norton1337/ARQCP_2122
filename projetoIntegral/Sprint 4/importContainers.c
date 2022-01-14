@@ -1,19 +1,8 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "info.h"
-	typedef struct {
-	char materialType[20];
-	float espessura;
-	
-} Materials;
 
-typedef struct {
-	int containerNumber;
-	float temperaturaInterior;
-	float containerVolume;
-	char type[20];
-	char load[20];
-	Materials materials[10];
-} Containers;
 
 int importContainers(Containers*** matrix){
 	int x=0;
@@ -23,13 +12,15 @@ int importContainers(Containers*** matrix){
 	Containers temp;
 
 	FILE* filePointer;
-	filePointer = fopen("containers.txt", "r");
+	filePointer = fopen("containersNew.txt", "r");
 	
 	if(filePointer == NULL) {
 		return 0;
 	}
-	char materials[100];
-	
+	char materialsAndThickness[100];
+	char *array[20];
+	char *materials[10];
+	char *thickness[10];
 	while(fscanf(filePointer,"%d,%d,%d,%d,%f,%f,%[^,],%[^,],{%[^}]}",
 				&x,
 				&y,
@@ -39,14 +30,45 @@ int importContainers(Containers*** matrix){
 				&temp.containerVolume,
 				temp.type,
 				temp.load,
-				materials) != EOF)
+				materialsAndThickness) != EOF)
 	{
 		
+		
+		
+		char * token = strtok(materialsAndThickness, "|");
+		int j=0;
+		while( token != NULL ) {
+			array[j++]=token;
+			token = strtok(NULL, "|");
+		}
+		
+
+		token = strtok(array[0], ",");
+		j=0;
+		while( token != NULL ) {
+			materials[j++]=token;
+			token = strtok(NULL, ",");
+			
+		}
+		
+		token = strtok(array[1], ",");
+		j=0;
+		while( token != NULL ) {
+			thickness[j++]=token;
+			token = strtok(NULL, ",");
+		}
+
+		temp.materialAmount=j;
+		for(int i=0;i<j;i++){
+			memcpy(temp.materials[i].materialType,materials[i], 20);
+			temp.materials[i].espessura = atof(thickness[i]);
+		}
+		
 		matrix[x][y][z]=temp;
+		
 	}
 				
 	fclose(filePointer);		
-						
 	
 	
 	return 1;

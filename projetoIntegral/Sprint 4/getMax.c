@@ -8,7 +8,7 @@ void getMax(int *x, int *y, int *z){
     int bufferLength = 255;
     char buffer[bufferLength];
  
-    filePointer = fopen("containers.txt", "r");
+    filePointer = fopen("containersNew.txt", "r");
 	
     while(fgets(buffer, bufferLength, filePointer)) {
         char *s = buffer;

@@ -37,8 +37,7 @@ int main(){
 	
 	//Print containers id
 	//printMatrix(matrix,x,y,z);
-    
-    printContainerInfo(matrix,1,0,1);
+    printContainerInfo(matrix,0,0,2);
     
     //Free memory
     freeMemory(matrix,x,y,z);

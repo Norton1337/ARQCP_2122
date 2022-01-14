@@ -14,6 +14,7 @@ typedef struct {
 	char type[20];
 	char load[20];
 	Materials materials[10];
+	int materialAmount;
 } Containers;
 
 #endif

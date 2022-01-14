@@ -14,9 +14,10 @@ void printContainerInfo(Containers*** matrix, int x, int y, int z){
 	printf("Container Volume: %f\n", matrix[x][y][z].containerVolume);
 	printf("Type: %s\n", matrix[x][y][z].type);
 	printf("Load: %s\n", matrix[x][y][z].load);
-	for(int i=0;i<10;i++){
-		printf("Material: %s", matrix[x][y][z].materials[i].materialType);
-		printf("Material: %f", matrix[x][y][z].materials[i].espessura);
+	printf("Materials [ %d ]: \n",matrix[x][y][z].materialAmount);
+	for(int i=0;i<matrix[x][y][z].materialAmount;i++){
+		printf("	Material: %s\n", matrix[x][y][z].materials[i].materialType);
+		printf("	Espessura: %f\n", matrix[x][y][z].materials[i].espessura);
 	}
 	
 }
