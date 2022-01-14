@@ -10,7 +10,9 @@ typedef struct {
 typedef struct {
 	int containerNumber;
 	float temperaturaInterior;
-	float containerVolume;
+	float length;
+	float width;
+	float height;
 	char type[20];
 	char load[20];
 	Materials materials[10];

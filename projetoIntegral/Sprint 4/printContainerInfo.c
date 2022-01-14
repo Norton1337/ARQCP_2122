@@ -11,7 +11,9 @@ void printContainerInfo(Containers*** matrix, int x, int y, int z){
 	
 	printf("Container Number: %d\n", matrix[x][y][z].containerNumber);
 	printf("Container Temperature: %f\n", matrix[x][y][z].temperaturaInterior);
-	printf("Container Volume: %f\n", matrix[x][y][z].containerVolume);
+	printf("Container Length: %f\n", matrix[x][y][z].length);
+	printf("Container Width: %f\n", matrix[x][y][z].width);
+	printf("Container Height: %f\n", matrix[x][y][z].height);
 	printf("Type: %s\n", matrix[x][y][z].type);
 	printf("Load: %s\n", matrix[x][y][z].load);
 	printf("Materials [ %d ]: \n",matrix[x][y][z].materialAmount);

@@ -1,7 +1,7 @@
-main: main.o freeMemory.o allocateMemory.o printMatrix.o getMax.o divideByComma.o importContainers.o printContainerInfo.o
-	gcc -Wall -g main.o freeMemory.o allocateMemory.o printMatrix.o getMax.o divideByComma.o importContainers.o printContainerInfo.o -o main
+main: main.o freeMemory.o allocateMemory.o printMatrix.o getMax.o divideByComma.o importContainers.o printContainerInfo.o checkRefrigerated.o calculateEnergy.o
+	gcc -Wall -g main.o freeMemory.o allocateMemory.o printMatrix.o getMax.o divideByComma.o importContainers.o printContainerInfo.o checkRefrigerated.o calculateEnergy.o -o main
 
-main.o: main.c info.h freeMemory.h allocateMemory.h printMatrix.h getMax.h importContainers.h printContainerInfo.h
+main.o: main.c info.h freeMemory.h allocateMemory.h printMatrix.h getMax.h importContainers.h printContainerInfo.h checkRefrigerated.h calculateEnergy.h
 	gcc -Wall -g -c main.c -o main.o
 
 freeMemory.o: freeMemory.c info.h
@@ -25,6 +25,11 @@ importContainers.o : importContainers.c info.h
 printContainerInfo.o : printContainerInfo.c info.h
 	gcc -Wall -g -c printContainerInfo.c -o printContainerInfo.o
 
+checkRefrigerated.o: checkRefrigerated.s
+	gcc -Wall -g -c checkRefrigerated.s -o checkRefrigerated.o
+	
+calculateEnergy.o: calculateEnergy.c
+	gcc -Wall -g -c calculateEnergy.c -o calculateEnergy.o
 run: main
 	./main
 

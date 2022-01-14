@@ -21,13 +21,15 @@ int importContainers(Containers*** matrix){
 	char *array[20];
 	char *materials[10];
 	char *thickness[10];
-	while(fscanf(filePointer,"%d,%d,%d,%d,%f,%f,%[^,],%[^,],{%[^}]}",
+	while(fscanf(filePointer,"%d,%d,%d,%d,%f,%f,%f,%f,%[^,],%[^,],{%[^}]}",
 				&x,
 				&y,
 				&z,
 				&temp.containerNumber,
 				&temp.temperaturaInterior,
-				&temp.containerVolume,
+				&temp.length,
+				&temp.width,
+				&temp.height,
 				temp.type,
 				temp.load,
 				materialsAndThickness) != EOF)

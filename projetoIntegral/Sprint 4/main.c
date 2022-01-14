@@ -7,7 +7,8 @@
 #include "printMatrix.h"
 #include "importContainers.h"
 #include "printContainerInfo.h"
-
+#include "checkRefrigerated.h"
+#include "calculateEnergy.h"
 int main(){
 	
 	int x=0;
@@ -36,9 +37,19 @@ int main(){
 	
 	
 	//Print containers id
-	//printMatrix(matrix,x,y,z);
-    printContainerInfo(matrix,0,0,2);
+	printMatrix(matrix,x,y,z);
+    //printContainerInfo(matrix,0,0,2);
     
+    
+    //int test = checkRefrigerated(matrix, 1,1,1);
+ 
+	printf("size: %ld\n",sizeof(matrix));
+        
+    float energyRequired = calculateEnergy(matrix,0,0,2,1.0);
+    if(energyRequired!=-1)
+		printf("Energy Required: %dJ\n",energyRequired);
+	else
+		printf("Container doesn't need refrigeration\n");
     //Free memory
     freeMemory(matrix,x,y,z);
 	
