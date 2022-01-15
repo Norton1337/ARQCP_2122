@@ -3,8 +3,8 @@
 #include "info.h"
 #include "freeMemory.h"
 #include "allocateMemory.h"
-#include "getMax.h"
-#include "printMatrix.h"
+#include "getSize.h"
+#include "printArray.h"
 #include "importContainers.h"
 #include "printContainerInfo.h"
 #include "checkRefrigerated.h"
@@ -25,23 +25,40 @@ int main(){
 		fprintf(stderr, "Out of memory");
         exit(0);
 	}
-	
-	
+
+	printf("\n --- <US409> I wish to fill a dynamically reserved matrix in memory. ---\n\n");
 	//Print containers id
-	//printArray(array,size);
+	
+	printf("Size of struct Containers: %d\n\n",sizeof(Containers));
+
+	printArray(array,size);
     printContainerInfo(array,size,0,0,2);
     
+    printf("\n\n --- <US410> Amount of needed energy to keep the container at its required temperature. ---\n\n");
     
-    //int test = checkRefrigerated(matrix, 1,1,1);
- 
-	//printf("size: %ld\n",sizeof(matrix[1][0][0].materials));
-        
-    /*float energyRequired = calculateEnergy(array,0,0,2,1.0);
-    if(energyRequired!=-1)
-		printf("Energy Required: %dJ\n",energyRequired);
+    double energyRequired = calculateEnergy(array,size,0,0,2,1.0);
+    if(energyRequired==-2)
+		printf("Container doesn't exist\n");
+    else if(energyRequired!=-1)
+		printf("Energy Required for this container: %EJ\n",energyRequired);
+	
 	else
 		printf("Container doesn't need refrigeration\n");
-		*/
+		
+		
+	printf("\n\n --- <US411>  Receive an alert when provided energy is not enough. ---\n\n");
+	
+	double providedEnergy = 400000000;
+	
+	int bool = enoughEnergy(array,size,providedEnergy);
+	if(bool==-1)
+		printf("Error has occured\n");
+	else if(bool==0)
+		printf(" !! Warning! Not enough power! !! --\n\n");
+	else
+		printf("All generators are being powered\n\n");
+	
+	
     //Free memory
     freeMemory(array,size);
 	

@@ -5,7 +5,6 @@ int freeMemory(Containers* array, int size){
 
 	for (int i = 0; i < size; i++){
 		free(array[i].type);
-		free(array[i].load);
 		for(int j = 0; j < array[i].materialAmount; j++){
 			free(array[i].materials[j].materialType);
 		}

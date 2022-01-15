@@ -21,7 +21,7 @@ void printContainerInfo(Containers* containerArray, int size, int x, int y, int 
 	printf("Container Width: %f\n", containerArray[k].width);
 	printf("Container Height: %f\n", containerArray[k].height);
 	printf("Type: %s\n", containerArray[k].type);
-	printf("Load: %s\n", containerArray[k].load);
+	printf("Load: %d\n", containerArray[k].load);
 	printf("Materials [ %d ]: \n",containerArray[k].materialAmount);
 	for(int i=0;i<containerArray[k].materialAmount;i++){
 		printf("	Material: %s\n", containerArray[k].materials[i].materialType);

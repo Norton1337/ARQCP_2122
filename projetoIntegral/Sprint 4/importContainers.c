@@ -15,12 +15,11 @@ int importContainers(Containers* arrayContainers){
 		return 0;
 	}
 	char type[20];
-	char load[20];
 	char materialsAndThickness[100];
 	char *array[20];
 	char *materials[10];
 	char *thickness[10];
-	while(fscanf(filePointer,"%d,%d,%d,%d,%f,%f,%f,%f,%[^,],%[^,],{%[^}]}",
+	while(fscanf(filePointer,"%d,%d,%d,%d,%f,%f,%f,%f,%d,%[^,],{%[^}]}",
 				&temp.x,
 				&temp.y,
 				&temp.z,
@@ -29,24 +28,17 @@ int importContainers(Containers* arrayContainers){
 				&temp.length,
 				&temp.width,
 				&temp.height,
+				&temp.load,
 				type,
-				load,
 				materialsAndThickness) != EOF)
 	{
-		
+
 		temp.type = (char*) calloc(strlen(type), sizeof(char));
 		if(temp.type == NULL){
 			return 0;
 		}
 		strcpy(temp.type, type);
-		
-		
-		temp.load = (char*) calloc(strlen(load), sizeof(char));
-		if(temp.load == NULL){
-			return 0;
-		}
-		strcpy(temp.load, load); 
-		
+			
 		
 		char * token = strtok(materialsAndThickness, "|");
 		int j=0;

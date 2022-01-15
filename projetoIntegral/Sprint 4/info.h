@@ -14,10 +14,11 @@ typedef struct {
 	float length;//4bytes
 	float width;//4bytes
 	float height;//4bytes
-	char *type;//8bytes
-	char *load;//8bytes
-	Materials *materials;//8bytes
+	int load;//4bytes
 	int materialAmount;//4bytes
+	char *type;//8bytes
+	Materials *materials;//8bytes
+	
 } Containers;
 
 #endif
