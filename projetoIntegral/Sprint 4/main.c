@@ -11,47 +11,39 @@
 #include "calculateEnergy.h"
 int main(){
 	
-	int x=0;
-	int y=0;
-	int z=0;
-	
-	getMax(&x,&y,&z);
-	
-	//printf("max X: %d\n",x);
-    //printf("max Y: %d\n",y);
-    //printf("max Z: %d\n",z);
-    
-    
-	Containers *** matrix = (Containers***) calloc(x, sizeof(Containers**));
-	
+	int size = getSize();
+
+	Containers *array = (Containers*) calloc(size, sizeof(Containers));
+
 	//Allocate Memory
-	if (allocateMemory(matrix,x,y,z) == 0){
+	/*if (allocateMemory(matrix,x,y,z) == 0){
 		fprintf(stderr, "Out of memory");
         exit(0);
-	}
+	}*/
 	
-	if(importContainers(matrix,x,y,z) == 0){
+	if(importContainers(array) == 0){
 		fprintf(stderr, "Out of memory");
         exit(0);
 	}
 	
 	
 	//Print containers id
-	printMatrix(matrix,x,y,z);
+	printArray(array,size);
     //printContainerInfo(matrix,0,0,2);
     
     
     //int test = checkRefrigerated(matrix, 1,1,1);
  
-	printf("size: %ld\n",sizeof(matrix));
+	//printf("size: %ld\n",sizeof(matrix[1][0][0].materials));
         
-    float energyRequired = calculateEnergy(matrix,0,0,2,1.0);
+    /*float energyRequired = calculateEnergy(array,0,0,2,1.0);
     if(energyRequired!=-1)
 		printf("Energy Required: %dJ\n",energyRequired);
 	else
 		printf("Container doesn't need refrigeration\n");
+		*/
     //Free memory
-    freeMemory(matrix,x,y,z);
+    freeMemory(array,size);
 	
 	
 	return 0;
