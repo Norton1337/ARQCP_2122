@@ -56,6 +56,7 @@ int importContainers(Containers* arrayContainers){
 		} 
 		
 		
+		
 		token = strtok(array[0], ",");
 		j=0;
 		while( token != NULL ) {
@@ -71,11 +72,15 @@ int importContainers(Containers* arrayContainers){
 			token = strtok(NULL, ",");
 		}
 		
+		
+		
 		temp.materialAmount=j;
 		temp.materials = (Materials*) calloc(temp.materialAmount, sizeof(Materials));
 		
 		for(int i=0;i<j;i++){
-			memcpy(temp.materials[i].materialType,materials[i], 20);
+
+			temp.materials[i].materialType = (char*) calloc(strlen(materials[i]), sizeof(char));
+			strcpy(temp.materials[i].materialType, materials[i]);
 			temp.materials[i].espessura = atof(thickness[i]);
 		}
 		

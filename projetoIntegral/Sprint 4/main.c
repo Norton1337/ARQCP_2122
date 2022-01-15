@@ -28,8 +28,8 @@ int main(){
 	
 	
 	//Print containers id
-	printArray(array,size);
-    //printContainerInfo(matrix,0,0,2);
+	//printArray(array,size);
+    printContainerInfo(array,size,0,0,2);
     
     
     //int test = checkRefrigerated(matrix, 1,1,1);
