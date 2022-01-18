@@ -28,8 +28,6 @@
 		subl $1, %esi
 		cmpl $0, %esi
 		jne loop
-
-	
 	end:	
 		
 		ret

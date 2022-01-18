@@ -14,7 +14,7 @@ int enoughEnergy(Containers * containerArray, int size, double providedEnergy){
 			return -1;
 		requiredEnergy+=thisEnergy;
 	}
-	
+	printf("%E > %E\n", requiredEnergy,providedEnergy);
 	if(requiredEnergy>providedEnergy){
 		return 0;
 	}else{

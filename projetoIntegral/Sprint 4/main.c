@@ -48,8 +48,10 @@ int main(){
 		
 	printf("\n\n --- <US411>  Receive an alert when provided energy is not enough. ---\n\n");
 	
-	double providedEnergy = 400000000;
-	
+	double providedEnergy;
+	printf("Insert total generated energy: \n");
+	scanf("%lf", &providedEnergy);
+
 	int bool = enoughEnergy(array,size,providedEnergy);
 	if(bool==-1)
 		printf("Error has occured\n");
