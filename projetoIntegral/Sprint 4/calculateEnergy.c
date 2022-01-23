@@ -6,11 +6,10 @@
 
 double calculateEnergy(Containers* containerArray, int size, int x, int y, int z, float hours){
 
-
-	if(checkRefrigerated(containerArray,size, 0,0,2)!=1)
+	if(checkRefrigerated(containerArray,size, x,y,z)!=1)	
 		return -1;
 
-
+	
 	int k=0;
 	for(k=0;k< size;k++){
 		if(x==containerArray[k].x && y==containerArray[k].y && z==containerArray[k].z){
@@ -32,15 +31,15 @@ double calculateEnergy(Containers* containerArray, int size, int x, int y, int z
 								  
 	Containers thisContainer = containerArray[k];
 
-	if(thisContainer.containerNumber==0)
+	if(thisContainer.containerNumber==0)	//check if container exists
 		return -2;
 			
 	double resistencia=0;
 	double area= (thisContainer.width*thisContainer.length)*2 + 
 				(thisContainer.width*thisContainer.height)*2 +
-				(thisContainer.height*thisContainer.length)*2;
+				(thisContainer.height*thisContainer.length)*2;	//calculate surface area
 	
-	for(int i=0;i<thisContainer.materialAmount;i++){
+	for(int i=0;i<thisContainer.materialAmount;i++){	//calculate total conductivity 
 		
 		float conductivity=0;
 		
@@ -52,6 +51,8 @@ double calculateEnergy(Containers* containerArray, int size, int x, int y, int z
 			}
 		}
 	}
+	
+	//calculate energy required with physics' maths
 	
 	double temperaturaExterior = 20.0;
 	
